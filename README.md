@@ -1,7 +1,5 @@
 # Parameters in SSM Parameter Store
 
-[![pipeline status](https://gitlab.com/pearsontechnology/ife/terraform-library/aws/tf_aws_ssm_parameter/badges/master/pipeline.svg)](https://gitlab.com/pearsontechnology/ife/terraform-library/aws/tf_aws_ssm_parameter/-/commits/master)
-
 Creates a Parameter in SSM Parameter Store that can be retrieved later.
 
 This module can create a single parameter value by using the `parameter_name` and `parameter_value` variables. It can also create multiple parameters at once by using the `parameter_map` variable.
@@ -10,7 +8,7 @@ Please note that you must use one method or the other. If you provide a `paramet
 
 If using `parameter_map`, all other values "description, type, tier, etc" will be the same for all parameters created. If there is a need for differences in those values, call the module individually with the needed values.
 
-An option for unique `description` values is to simply leave that variable blank. A default description with the name of the paramater will be created. This use case can be seen in the [examples](examples) directory.
+An option for unique `description` values is to simply leave that variable blank. A default description with the name of the paramater will be created. This use case, along with others can be seen in the [examples](https://github.com/so1omon563/terraform-aws-ssm-parameter/tree/main/examples) directory.
 
 ### Populating the parameter
 
