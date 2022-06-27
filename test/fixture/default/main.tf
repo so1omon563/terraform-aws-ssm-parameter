@@ -2,9 +2,13 @@ variable "name" {}
 
 variable "tags" {}
 
-variable "topic_prefix" {}
+variable "parameter_name" {}
 
-variable "topic_name_override" {}
+variable "parameter_value" {}
+
+variable "map_name" {}
+
+variable "parameter_map" {}
 
 provider "aws" {
   default_tags {
@@ -12,34 +16,25 @@ provider "aws" {
   }
 }
 
-module "sns" {
+module "parameter" {
   source = "../../../"
 
-  name = var.name
-  tags = {
-    example = "true"
-  }
+  name            = var.name
+  parameter_name  = var.parameter_name
+  parameter_value = var.parameter_value
 }
-output "sns" { value = module.sns }
+output "parameter" {
+  value     = module.parameter
+  sensitive = true
+}
 
-module "sns-prefix" {
+module "parameter_map" {
   source = "../../../"
 
-  name         = var.name
-  topic_prefix = var.topic_prefix
-  tags = {
-    example = "true"
-  }
+  name          = var.map_name
+  parameter_map = var.parameter_map
 }
-output "sns-prefix" { value = module.sns-prefix }
-
-module "sns-override" {
-  source = "../../../"
-
-  name                = var.name
-  topic_name_override = var.topic_name_override
-  tags = {
-    example = "true"
-  }
+output "parameter_map" {
+  value     = module.parameter_map
+  sensitive = true
 }
-output "sns-override" { value = module.sns-override }
