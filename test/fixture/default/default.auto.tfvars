@@ -1,7 +1,14 @@
-name = "kitchen-default-example"
+name            = "kitchen-default-example"
+parameter_name  = "myparameter/test-example"
+parameter_value = "test parameter"
 
-topic_prefix        = "prefix-example"
-topic_name_override = "kitchen-override-example"
+map_name = "kitchen-default-example-map"
+
+parameter_map = {
+  "myparameters/example1" = "value1"
+  "myparameters/example2" = "value2"
+  "myparameters/example3" = "value3"
+}
 
 tags = {
   environment = "dev"
