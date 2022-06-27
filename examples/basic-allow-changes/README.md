@@ -1,6 +1,8 @@
 # Basic "Allow Changes" example
 
 Basic usage example that allows changes can be found in the `main.tf` source file.
+
+Example shows using Default Tags in the provider as well as passing additional tags into the resource.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
