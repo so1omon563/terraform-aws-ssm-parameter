@@ -3,14 +3,14 @@
 include_controls 'inspec-aws'
 require './test/library/common'
 
-tfstate = get_state
+tfstate = StateFileReader.new
 
-default_id = tfstate['outputs']['parameter']['value']['parameter']['/kitchen-default-example/myparameter/test-example']['name'].to_s
+default_id = tfstate.read['outputs']['parameter']['value']['parameter']['/kitchen-default-example/myparameter/test-example']['name'].to_s
 
 # For parameter_map tests
-id_1 = tfstate['outputs']['parameter_map']['value']['parameter']['/kitchen-default-example-map/myparameters/example1']['name'].to_s
-id_2 = tfstate['outputs']['parameter_map']['value']['parameter']['/kitchen-default-example-map/myparameters/example2']['name'].to_s
-id_3 = tfstate['outputs']['parameter_map']['value']['parameter']['/kitchen-default-example-map/myparameters/example3']['name'].to_s
+id_1 = tfstate.read['outputs']['parameter_map']['value']['parameter']['/kitchen-default-example-map/myparameters/example1']['name'].to_s
+id_2 = tfstate.read['outputs']['parameter_map']['value']['parameter']['/kitchen-default-example-map/myparameters/example2']['name'].to_s
+id_3 = tfstate.read['outputs']['parameter_map']['value']['parameter']['/kitchen-default-example-map/myparameters/example3']['name'].to_s
 
 control 'default' do
   describe aws_ssm_parameter(name: default_id) do

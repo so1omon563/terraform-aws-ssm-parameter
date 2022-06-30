@@ -1,10 +1,10 @@
 #!/bin/sh
 source .image
 
-docker image | grep $IMAGE &> /dev/null
+docker images | grep $IMAGE &> /dev/null
 IMAGE_EXISTS=$?
 
-if [[IMAGE_EXISTS -ne 0]]; then
+if [[ $IMAGE_EXISTS -ne 0 ]]; then
   docker pull $IMAGE
 fi
 
@@ -14,7 +14,7 @@ cd ${repo_root}
 docker ps -a | grep $IMAGE &> /dev/null
 CONTAINER_EXISTS=$?
 
-if [[ CONTAINER_EXISTS -ne 0 ]]; then
+if [[ $CONTAINER_EXISTS -ne 0 ]]; then
     docker run --rm \
         -v ${repo_root}:${repo_root} \
         -v $HOME/.ssh:/root/.ssh:ro \
@@ -25,7 +25,7 @@ if [[ CONTAINER_EXISTS -ne 0 ]]; then
         --entrypoint .githooks/pre-commit.installed \
         $IMAGE
 else
-    ${repo_root}/.githooks/pre-commit.installed
+    echo "Please exit the running container before running pre-commit"
 fi
 
 # Keep module docs up to date
@@ -33,3 +33,6 @@ for i in $(find ${repo_root} -name "README.md")
 do
   git add $i
 done
+
+# Run file cleanup script
+${repo_root}/scripts/cleanup.sh
