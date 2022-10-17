@@ -63,7 +63,13 @@ Setting this value to `false` will create a new resource that will change the pa
 Examples for use can be found under the [examples](https://github.com/so1omon563/terraform-aws-ssm-parameter/tree/main/examples) directory.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
 Auto-generated technical documentation is created using [`terraform-docs`](https://terraform-docs.io/)
+## Examples
+
+```hcl
+# See examples under the top level examples directory for more information on how to use this module.
+```
 
 ## Requirements
 
@@ -76,8 +82,8 @@ Auto-generated technical documentation is created using [`terraform-docs`](https
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.20.1 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.3.2 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.35.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.4.3 |
 
 ## Modules
 
@@ -118,4 +124,6 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_parameter"></a> [parameter](#output\_parameter) | Collection of outputs for the parameter - excluding the parameter value |
+
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

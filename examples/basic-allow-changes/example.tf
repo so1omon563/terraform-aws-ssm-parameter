@@ -9,20 +9,20 @@ provider "aws" {
 
 module "parameter" {
   source  = "so1omon563/ssm-parameter/aws"
-  version = "0.1.0" # Replace with appropriate version
+  version = "1.1.0" # Replace with appropriate version
 
-  name = "example-parameter"
+  name           = "example-parameter"
+  parameter_name = "myparameter/example"
+
   # Parameter value - sensitive values should not be placed in source control
   # Example value(s) placed here to show how calling the module can work.
-  parameter_map = {
-    "myparameters/example1" = "value1"
-    "myparameters/example2" = "value2"
-    "myparameters/example3" = "value3"
-  }
+  parameter_value = "See `Populating the parameter` in README.md"
+  //  parameter_value = "changed"
 
   tags = {
     example = "true"
   }
+  ignore_changes = false
 }
 output "parameter" {
   value = module.parameter

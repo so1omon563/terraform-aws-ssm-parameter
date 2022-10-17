@@ -14,7 +14,7 @@ module "parameter" {
     "/myparameters/example3" = "value3"
   }
   source  = "so1omon563/ssm-parameter/aws"
-  version = "0.1.0" # Replace with appropriate version
+  version = "1.1.0" # Replace with appropriate version
 
   name           = "example-parameter"
   parameter_name = each.key
