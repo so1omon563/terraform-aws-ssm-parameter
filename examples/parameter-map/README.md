@@ -1,9 +1,45 @@
 # Parameter Map
 
-Basic usage example using `parameter_map` can be found in the `main.tf` source file.
+Basic usage example using `parameter_map`.
 
 Example shows using Default Tags in the provider as well as passing additional tags into the resource.
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+
+## Examples
+
+```hcl
+provider "aws" {
+  default_tags {
+    tags = {
+      environment = "dev"
+      terraform   = "true"
+    }
+  }
+}
+
+module "parameter" {
+  source  = "so1omon563/ssm-parameter/aws"
+  version = "1.1.0" # Replace with appropriate version
+
+  name = "example-parameter"
+  # Parameter value - sensitive values should not be placed in source control
+  # Example value(s) placed here to show how calling the module can work.
+  parameter_map = {
+    "myparameters/example1" = "value1"
+    "myparameters/example2" = "value2"
+    "myparameters/example3" = "value3"
+  }
+
+  tags = {
+    example = "true"
+  }
+}
+output "parameter" {
+  value = module.parameter
+}
+```
+
 ## Requirements
 
 No requirements.
@@ -16,7 +52,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_parameter"></a> [parameter](#module\_parameter) | so1omon563/ssm-parameter/aws | 0.1.0 |
+| <a name="module_parameter"></a> [parameter](#module\_parameter) | so1omon563/ssm-parameter/aws | 1.1.0 |
 
 ## Resources
 
@@ -31,4 +67,6 @@ No inputs.
 | Name | Description |
 |------|-------------|
 | <a name="output_parameter"></a> [parameter](#output\_parameter) | n/a |
+
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
