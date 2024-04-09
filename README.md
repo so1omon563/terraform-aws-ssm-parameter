@@ -75,15 +75,15 @@ Auto-generated technical documentation is created using [`terraform-docs`](https
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.38 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.15 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.35.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.4.3 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.44.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.6.0 |
 
 ## Modules
 
@@ -111,9 +111,10 @@ No modules.
 | <a name="input_description"></a> [description](#input\_description) | Description of the secret. If not provided, a default value based on `name` and `paramater_name` values will be used. | `string` | `null` | no |
 | <a name="input_ignore_changes"></a> [ignore\_changes](#input\_ignore\_changes) | To ignore changes to the parameter or not. This allows for changing the parameter after initial creation if desired. | `bool` | `true` | no |
 | <a name="input_kms_arn"></a> [kms\_arn](#input\_kms\_arn) | The KMS key id or arn for encrypting a SecureString. If not provided, the parameter will be stored using the default key. | `string` | `null` | no |
-| <a name="input_name"></a> [name](#input\_name) | Short, descriptive name of the environment. All resources will be named using this value as a prefix. | `string` | n/a | yes |
-| <a name="input_parameter_map"></a> [parameter\_map](#input\_parameter\_map) | A map of `parameter_name` and `parameter_value` that can be used to populate multiple parameters at once. Please see information on `parameter_name` and `parameter_value` for acceptable values. | `map(string)` | `null` | no |
+| <a name="input_name"></a> [name](#input\_name) | Short, descriptive name of the environment. If provided, resources will be named using this value as a prefix. | `string` | `null` | no |
+| <a name="input_parameter_map"></a> [parameter\_map](#input\_parameter\_map) | A map of `parameter_name` and `parameter_value` that can be used to populate multiple parameters at once. Please see information on `parameter_name` and `parameter_value` for acceptable values. Please note that this is not compatible with the `parameter_name_override` variable. | `map(string)` | `null` | no |
 | <a name="input_parameter_name"></a> [parameter\_name](#input\_parameter\_name) | The name of the parameter. Will be prepended with `/var.name/`. If no value is specified, then will use the format of `/var.name/random-hex`. Note that because this is prepended with `/var.name/`, no leading forward slash (/) is needed. Do **NOT** add a leading forward slash to the name. For additional requirements and constraints, see the [AWS SSM User Guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html). | `string` | `null` | no |
+| <a name="input_parameter_name_override"></a> [parameter\_name\_override](#input\_parameter\_name\_override) | Used if there is a need to specify a parameter name outside of the standardized nomenclature defined by the module. For example, if you have a specific naming pattern that falls outside of the defaults this module uses, or if importing a parameter that doesn't follow the module's naming formats. Can not be used if `parameter_map` is used. | `string` | `null` | no |
 | <a name="input_parameter_value"></a> [parameter\_value](#input\_parameter\_value) | The value of the parameter. | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tag names and values for tags to apply to all taggable resources created by the module. Default value is a blank map to allow for using Default Tags in the provider. | `map(string)` | `{}` | no |
 | <a name="input_tier"></a> [tier](#input\_tier) | The tier of the parameter. If not specified, will default to `Standard`. Valid tiers are `Standard`, `Advanced`, and `Intelligent-Tiering`. For more information on parameter tiers, see the [AWS SSM Parameter tier comparison and guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html). | `string` | `"Standard"` | no |

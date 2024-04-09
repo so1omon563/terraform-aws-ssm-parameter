@@ -7,7 +7,6 @@ resource "aws_ssm_parameter" "parameter_ignore" {
   description     = var.description == null ? "Parameter for ${local.parameter_name}" : var.description
   tier            = var.tier
   key_id          = var.kms_arn
-  overwrite       = true
   allowed_pattern = var.allowed_pattern
   data_type       = var.data_type
   tags            = merge(tomap({ "IgnoreValueChanges" = "true" }), local.tags)
@@ -26,7 +25,6 @@ resource "aws_ssm_parameter" "parameter" {
   description     = var.description == null ? "Parameter for ${local.parameter_name}" : var.description
   tier            = var.tier
   key_id          = var.kms_arn
-  overwrite       = true
   allowed_pattern = var.allowed_pattern
   data_type       = var.data_type
   tags            = merge(tomap({ "IgnoreValueChanges" = "false" }), local.tags)
@@ -41,7 +39,6 @@ resource "aws_ssm_parameter" "parameter_map_ignore" {
   description     = var.description == null ? "Parameter for ${each.key}" : var.description
   tier            = var.tier
   key_id          = var.kms_arn
-  overwrite       = true
   allowed_pattern = var.allowed_pattern
   data_type       = var.data_type
   tags            = merge(tomap({ "IgnoreValueChanges" = "true" }), local.tags)
@@ -60,7 +57,6 @@ resource "aws_ssm_parameter" "parameter_map" {
   description     = var.description == null ? "Parameter for ${each.key}" : var.description
   tier            = var.tier
   key_id          = var.kms_arn
-  overwrite       = true
   allowed_pattern = var.allowed_pattern
   data_type       = var.data_type
   tags            = merge(tomap({ "IgnoreValueChanges" = "false" }), local.tags)

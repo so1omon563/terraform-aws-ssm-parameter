@@ -2,12 +2,13 @@
 
 variable "name" {
   type        = string
-  description = "Short, descriptive name of the environment. All resources will be named using this value as a prefix."
+  description = "Short, descriptive name of the environment. If provided, resources will be named using this value as a prefix."
+  default     = null
 }
 
 variable "parameter_map" {
   type        = map(string)
-  description = "A map of `parameter_name` and `parameter_value` that can be used to populate multiple parameters at once. Please see information on `parameter_name` and `parameter_value` for acceptable values."
+  description = "A map of `parameter_name` and `parameter_value` that can be used to populate multiple parameters at once. Please see information on `parameter_name` and `parameter_value` for acceptable values. Please note that this is not compatible with the `parameter_name_override` variable."
   default     = null
 }
 
@@ -17,6 +18,11 @@ variable "parameter_name" {
   default     = null
 }
 
+variable "parameter_name_override" {
+  type        = string
+  description = "Used if there is a need to specify a parameter name outside of the standardized nomenclature defined by the module. For example, if you have a specific naming pattern that falls outside of the defaults this module uses, or if importing a parameter that doesn't follow the module's naming formats. Can not be used if `parameter_map` is used."
+  default     = null
+}
 variable "parameter_value" {
   type        = string
   description = "The value of the parameter."
