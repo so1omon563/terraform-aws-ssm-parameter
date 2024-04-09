@@ -9,7 +9,7 @@ provider "aws" {
 
 module "parameter" {
   source  = "so1omon563/ssm-parameter/aws"
-  version = "1.1.0" # Replace with appropriate version
+  version = "2.0.0" # Replace with appropriate version
 
   name = "example-parameter"
   # Parameter value - sensitive values should not be placed in source control
