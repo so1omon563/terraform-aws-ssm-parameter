@@ -3,19 +3,22 @@ on:
   pull_request_target:
     types:
       - closed
+permissions: read-all
 jobs:
   if_merged:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4.1.1
         with:
           fetch-depth: "0"
       - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@1.61.0
+        uses: anothrNick/github-tag-action@1.67.0
         env:
-          DEFAULT_BUMP: none
+          DEFAULT_BUMP: patch
           RELEASE_BRANCHES: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
