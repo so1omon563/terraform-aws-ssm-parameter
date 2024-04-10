@@ -2,7 +2,7 @@
 
 variable "name" {
   type        = string
-  description = "Short, descriptive name of the environment. If provided, resources will be named using this value as a prefix."
+  description = "Usually, a short, descriptive name of the environment without spaces. If provided, this will be used as the prefix for the parameter."
   default     = null
 }
 
