@@ -1,8 +1,7 @@
 # This file is for local values that may be required for the module to run.
 
 locals {
-  account_id = data.aws_caller_identity.current.account_id
-  tags       = var.tags
+  tags = var.tags
   # Setting these 3 values to avoid mixing count and for_each. It also helps better name the outputs. The value is irrelavent. We only care about the key.
   parameter_ignore = var.ignore_changes == true && var.parameter_map == null ? { "parameter" = "ignore" } : {}
   parameter        = var.ignore_changes == false && var.parameter_map == null ? { "parameter" = "noignore" } : {}
