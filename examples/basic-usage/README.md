@@ -9,6 +9,17 @@ Example shows using Default Tags in the provider as well as passing additional t
 ## Examples
 
 ```hcl
+terraform {
+  required_version = ">= 0.15"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 4.0, < 6.0"
+    }
+  }
+}
+
 provider "aws" {
   default_tags {
     tags = {
@@ -20,7 +31,7 @@ provider "aws" {
 
 module "parameter" {
   source         = "so1omon563/ssm-parameter/aws"
-  version = "3.0.0" # Replace with appropriate version
+  version        = "3.0.0" # Replace with appropriate version
   ignore_changes = false
 
   name           = "example-parameter"
@@ -41,7 +52,10 @@ output "parameter" {
 
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.15 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0, < 6.0 |
 
 ## Providers
 
